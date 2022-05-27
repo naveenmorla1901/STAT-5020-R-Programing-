@@ -1,0 +1,1202 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Body\_fat\_Prediction},
+  pdfauthor={Naveen},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Body\_fat\_Prediction}
+\author{Naveen}
+\date{5/26/2022}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rm}\NormalTok{(}\AttributeTok{list =} \FunctionTok{ls}\NormalTok{())}
+\DocumentationTok{\#\# Read data from a .csv file \#\#}
+\NormalTok{women }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/morla/Downloads/dataset\_RG.csv"}\NormalTok{)}
+\NormalTok{Dat }\OtherTok{\textless{}{-}}\NormalTok{ women[,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(Dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   WomenBodyFat         Age            Height      WaistCircumference
+##  Min.   :0.1300   Min.   :13.00   Min.   :150.0   Min.   : 57.00    
+##  1st Qu.:0.2900   1st Qu.:21.00   1st Qu.:160.0   1st Qu.: 73.00    
+##  Median :0.3250   Median :28.00   Median :163.0   Median : 78.00    
+##  Mean   :0.3302   Mean   :29.88   Mean   :163.5   Mean   : 79.84    
+##  3rd Qu.:0.3825   3rd Qu.:38.00   3rd Qu.:168.0   3rd Qu.: 87.00    
+##  Max.   :0.5600   Max.   :62.00   Max.   :176.0   Max.   :105.00    
+##  HipCircumference ChestCircumference UpperarmCircumference
+##  Min.   : 84.0    Min.   : 72.00     Min.   :21.00        
+##  1st Qu.: 96.0    1st Qu.: 86.00     1st Qu.:27.00        
+##  Median :102.0    Median : 92.50     Median :29.00        
+##  Mean   :102.3    Mean   : 93.46     Mean   :29.46        
+##  3rd Qu.:108.0    3rd Qu.: 99.25     3rd Qu.:31.25        
+##  Max.   :133.0    Max.   :121.00     Max.   :40.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#norm\_scale \textless{}{-} predict(process, as.data.frame(Dat))}
+\NormalTok{data1 }\OtherTok{\textless{}{-}} \FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{scale}\NormalTok{(Dat))}
+
+\DocumentationTok{\#\# Fit MLR model}
+\NormalTok{mlr }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(WomenBodyFat }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . , }\AttributeTok{data =}\NormalTok{ Dat)}
+\FunctionTok{summary}\NormalTok{(mlr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = WomenBodyFat ~ ., data = Dat)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.062404 -0.007196 -0.000059  0.006747  0.112077 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)            0.0039905  0.0498647   0.080   0.9363    
+## Age                    0.0001805  0.0001717   1.051   0.2950    
+## Height                -0.0028361  0.0003054  -9.286 5.02e-16 ***
+## WaistCircumference     0.0023879  0.0004856   4.917 2.62e-06 ***
+## HipCircumference       0.0046686  0.0003609  12.936  < 2e-16 ***
+## ChestCircumference     0.0010471  0.0004786   2.188   0.0305 *  
+## UpperarmCircumference  0.0006234  0.0009176   0.679   0.4981    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.0195 on 129 degrees of freedom
+## Multiple R-squared:  0.9444, Adjusted R-squared:  0.9418 
+## F-statistic:   365 on 6 and 129 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mlr5 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(WomenBodyFat }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . , }\AttributeTok{data =}\NormalTok{ data1)}
+\FunctionTok{summary}\NormalTok{(mlr5)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = WomenBodyFat ~ ., data = data1)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.77210 -0.08903 -0.00073  0.08348  1.38667 
+## 
+## Coefficients:
+##                         Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)           -4.817e-17  2.069e-02   0.000   1.0000    
+## Age                    2.495e-02  2.373e-02   1.051   0.2950    
+## Height                -2.031e-01  2.187e-02  -9.286 5.02e-16 ***
+## WaistCircumference     2.929e-01  5.956e-02   4.917 2.62e-06 ***
+## HipCircumference       5.605e-01  4.333e-02  12.936  < 2e-16 ***
+## ChestCircumference     1.297e-01  5.930e-02   2.188   0.0305 *  
+## UpperarmCircumference  2.910e-02  4.284e-02   0.679   0.4981    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.2413 on 129 degrees of freedom
+## Multiple R-squared:  0.9444, Adjusted R-squared:  0.9418 
+## F-statistic:   365 on 6 and 129 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 95\% Confidence interval for model parameters \#\#}
+\FunctionTok{confint}\NormalTok{(mlr, }\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                               2.5 %        97.5 %
+## (Intercept)           -0.0946680223  0.1026490455
+## Age                   -0.0001591942  0.0005202857
+## Height                -0.0034404359 -0.0022318536
+## WaistCircumference     0.0014270470  0.0033487352
+## HipCircumference       0.0039545603  0.0053826017
+## ChestCircumference     0.0001001777  0.0019940727
+## UpperarmCircumference -0.0011922024  0.0024389608
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Scatter plot \#\#}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Age, Dat}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and Age"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Age"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Height, Dat}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and Weight"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Height"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{WaistCircumference, Dat}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and WaistCircumference"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"WaistCircumference"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{HipCircumference, Dat}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and HipCircumference"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"HipCircumference"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{ChestCircumference, Dat}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and ChestCircumference"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"ChestCircumference"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{UpperarmCircumference, Dat}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and UpperarmCircumference"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"UpperarmCircumference"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pairs}\NormalTok{(Dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-12-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Type I ANOVA \#\#}
+\NormalTok{res.aov.IA }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(WomenBodyFat }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data =}\NormalTok{ Dat)}
+\FunctionTok{summary}\NormalTok{(res.aov.IA)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                        Df Sum Sq Mean Sq  F value   Pr(>F)    
+## Age                     1 0.1169  0.1169  307.518  < 2e-16 ***
+## Height                  1 0.0092  0.0092   24.226 2.57e-06 ***
+## WaistCircumference      1 0.6044  0.6044 1589.501  < 2e-16 ***
+## HipCircumference        1 0.1000  0.1000  263.055  < 2e-16 ***
+## ChestCircumference      1 0.0021  0.0021    5.491   0.0206 *  
+## UpperarmCircumference   1 0.0002  0.0002    0.461   0.4981    
+## Residuals             129 0.0491  0.0004                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{res.aov.IB }\OtherTok{\textless{}{-}} \FunctionTok{aov}\NormalTok{(WomenBodyFat }\SpecialCharTok{\textasciitilde{}}\NormalTok{  ., }\AttributeTok{data =}\NormalTok{ Dat)}
+\FunctionTok{summary}\NormalTok{(res.aov.IB)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                        Df Sum Sq Mean Sq  F value   Pr(>F)    
+## Age                     1 0.1169  0.1169  307.518  < 2e-16 ***
+## Height                  1 0.0092  0.0092   24.226 2.57e-06 ***
+## WaistCircumference      1 0.6044  0.6044 1589.501  < 2e-16 ***
+## HipCircumference        1 0.1000  0.1000  263.055  < 2e-16 ***
+## ChestCircumference      1 0.0021  0.0021    5.491   0.0206 *  
+## UpperarmCircumference   1 0.0002  0.0002    0.461   0.4981    
+## Residuals             129 0.0491  0.0004                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Type II and III ANOVA \#\#}
+\FunctionTok{library}\NormalTok{(car)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: carData
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{Anova}\NormalTok{(mlr, }\AttributeTok{type=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Anova Table (Type II tests)
+## 
+## Response: WomenBodyFat
+##                         Sum Sq  Df  F value    Pr(>F)    
+## Age                   0.000420   1   1.1055   0.29502    
+## Height                0.032788   1  86.2278 5.020e-16 ***
+## WaistCircumference    0.009193   1  24.1772 2.621e-06 ***
+## HipCircumference      0.063635   1 167.3520 < 2.2e-16 ***
+## ChestCircumference    0.001820   1   4.7866   0.03048 *  
+## UpperarmCircumference 0.000175   1   0.4615   0.49815    
+## Residuals             0.049052 129                       
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{Anova}\NormalTok{(mlr, }\AttributeTok{type=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Anova Table (Type III tests)
+## 
+## Response: WomenBodyFat
+##                         Sum Sq  Df  F value    Pr(>F)    
+## (Intercept)           0.000002   1   0.0064   0.93634    
+## Age                   0.000420   1   1.1055   0.29502    
+## Height                0.032788   1  86.2278 5.020e-16 ***
+## WaistCircumference    0.009193   1  24.1772 2.621e-06 ***
+## HipCircumference      0.063635   1 167.3520 < 2.2e-16 ***
+## ChestCircumference    0.001820   1   4.7866   0.03048 *  
+## UpperarmCircumference 0.000175   1   0.4615   0.49815    
+## Residuals             0.049052 129                       
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\# Removing high cor regrossor }\AlertTok{\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\FunctionTok{library}\NormalTok{(car)}
+\FunctionTok{vif}\NormalTok{(mlr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   Age                Height    WaistCircumference 
+##              1.305736              1.109352              8.227047 
+##      HipCircumference    ChestCircumference UpperarmCircumference 
+##              4.354315              8.155432              4.255732
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(Dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                       WomenBodyFat         Age      Height WaistCircumference
+## WomenBodyFat             1.0000000  0.36413427 -0.11345341         0.89865035
+## Age                      0.3641343  1.00000000 -0.03102759         0.44337051
+## Height                  -0.1134534 -0.03102759  1.00000000         0.02629859
+## WaistCircumference       0.8986503  0.44337051  0.02629859         1.00000000
+## HipCircumference         0.9091104  0.25180713  0.13329028         0.81356458
+## ChestCircumference       0.8838725  0.40320626  0.07143423         0.92534829
+## UpperarmCircumference    0.8530102  0.32938842 -0.04379011         0.82455232
+##                       HipCircumference ChestCircumference UpperarmCircumference
+## WomenBodyFat                 0.9091104         0.88387249            0.85301018
+## Age                          0.2518071         0.40320626            0.32938842
+## Height                       0.1332903         0.07143423           -0.04379011
+## WaistCircumference           0.8135646         0.92534829            0.82455232
+## HipCircumference             1.0000000         0.82711585            0.81793094
+## ChestCircumference           0.8271158         1.00000000            0.82357949
+## UpperarmCircumference        0.8179309         0.82357949            1.00000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(StepReg)}
+\FunctionTok{stepwise}\NormalTok{(Dat, }\AttributeTok{y=}\StringTok{"WomenBodyFat"}\NormalTok{, }\AttributeTok{selection =} \StringTok{"forward"}\NormalTok{, }\AttributeTok{select =} \StringTok{"adjRsq"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $process
+##   Step      EffectEntered EffectNumber    Select
+## 1    0          intercept            1 0.0000000
+## 2    1   HipCircumference            2 0.8251867
+## 3    2 WaistCircumference            3 0.8997966
+## 4    3             Height            4 0.9398642
+## 5    4 ChestCircumference            5 0.9419745
+## 6    5                Age            6 0.9420327
+## 
+## $variate
+## [1] "intercept"          "HipCircumference"   "WaistCircumference"
+## [4] "Height"             "ChestCircumference" "Age"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Dat}\OtherTok{\textless{}{-}}\NormalTok{Dat[,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{)]}
+\DocumentationTok{\#\# Fit MLR model}
+\NormalTok{mlr2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(WomenBodyFat }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . , }\AttributeTok{data =}\NormalTok{ Dat)}
+\FunctionTok{summary}\NormalTok{(mlr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = WomenBodyFat ~ ., data = Dat)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.080091 -0.007232 -0.000112  0.006759  0.111017 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)         0.0139131  0.0498106   0.279    0.780    
+## Age                 0.0002042  0.0001740   1.173    0.243    
+## Height             -0.0028416  0.0003000  -9.471   <2e-16 ***
+## WaistCircumference  0.0032698  0.0003289   9.941   <2e-16 ***
+## HipCircumference    0.0050213  0.0003142  15.980   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.01979 on 131 degrees of freedom
+## Multiple R-squared:  0.9418, Adjusted R-squared:   0.94 
+## F-statistic: 530.1 on 4 and 131 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(mlr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Age             Height WaistCircumference   HipCircumference 
+##           1.301575           1.039263           3.663524           3.204528
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(car)}
+\FunctionTok{Anova}\NormalTok{(mlr2, }\AttributeTok{type=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Anova Table (Type II tests)
+## 
+## Response: WomenBodyFat
+##                      Sum Sq  Df F value Pr(>F)    
+## Age                0.000539   1   1.377 0.2427    
+## Height             0.035135   1  89.695 <2e-16 ***
+## WaistCircumference 0.038710   1  98.821 <2e-16 ***
+## HipCircumference   0.100026   1 255.351 <2e-16 ***
+## Residuals          0.051315 131                   
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Age, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. Age"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Height, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. Height"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{WaistCircumference, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. WaistCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{HipCircumference, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. HipCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for independence of random error}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(Dat))}
+\NormalTok{sort\_x1 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Age, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr2}\SpecialCharTok{$}\NormalTok{residuals[sort\_x1}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence  Residuals sorted by Age"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sort\_x2 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Height, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr2}\SpecialCharTok{$}\NormalTok{residuals[sort\_x2}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by Height"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-25-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sort\_x3 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{WaistCircumference, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr2}\SpecialCharTok{$}\NormalTok{residuals[sort\_x3}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by WaistCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-26-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sort\_x4 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{HipCircumference, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr2}\SpecialCharTok{$}\NormalTok{residuals[sort\_x4}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by HipCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-27-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for zero mean and constant variance of random error}
+\FunctionTok{plot}\NormalTok{(mlr2}\SpecialCharTok{$}\NormalTok{fitted.values, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for 0 mean and constant var }\SpecialCharTok{\textbackslash{}n}\StringTok{  Residual vs. fitted value"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-28-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for normality of random error}
+\FunctionTok{qqnorm}\NormalTok{(mlr2}\SpecialCharTok{$}\NormalTok{residuals)}
+\FunctionTok{qqline}\NormalTok{(mlr2}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-29-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\# Apply Transformation(we are not applying this because this is not useful for us) }\AlertTok{\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\NormalTok{mlr2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\FunctionTok{log}\NormalTok{(WomenBodyFat) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ ., }\AttributeTok{data=}\NormalTok{Dat)}
+\FunctionTok{summary}\NormalTok{(mlr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = log(WomenBodyFat) ~ ., data = Dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.44858 -0.03140  0.01434  0.04297  0.34298 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)        -2.1314946  0.2319437  -9.190 7.72e-16 ***
+## Age                 0.0011161  0.0008103   1.378    0.171    
+## Height             -0.0091251  0.0013972  -6.531 1.32e-09 ***
+## WaistCircumference  0.0101175  0.0015316   6.606 9.04e-10 ***
+## HipCircumference    0.0160438  0.0014632  10.965  < 2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.09216 on 131 degrees of freedom
+## Multiple R-squared:  0.8832, Adjusted R-squared:  0.8796 
+## F-statistic: 247.6 on 4 and 131 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for normality of random error}
+\FunctionTok{qqnorm}\NormalTok{(mlr2}\SpecialCharTok{$}\NormalTok{residuals)}
+\FunctionTok{qqline}\NormalTok{(mlr2}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-31-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(mlr2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Age             Height WaistCircumference   HipCircumference 
+##           1.301575           1.039263           3.663524           3.204528
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(Dat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    WomenBodyFat         Age      Height WaistCircumference
+## WomenBodyFat          1.0000000  0.36413427 -0.11345341         0.89865035
+## Age                   0.3641343  1.00000000 -0.03102759         0.44337051
+## Height               -0.1134534 -0.03102759  1.00000000         0.02629859
+## WaistCircumference    0.8986503  0.44337051  0.02629859         1.00000000
+## HipCircumference      0.9091104  0.25180713  0.13329028         0.81356458
+##                    HipCircumference
+## WomenBodyFat              0.9091104
+## Age                       0.2518071
+## Height                    0.1332903
+## WaistCircumference        0.8135646
+## HipCircumference          1.0000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Age, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. Age"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{Height, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. Height"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{WaistCircumference, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. WaistCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(Dat}\SpecialCharTok{$}\NormalTok{HipCircumference, mlr2}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. HipCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\CommentTok{\#plot(Dat$ChestCircumference, mlr2$residuals, }
+   \CommentTok{\#  main = "Check for linearity \textbackslash{}n Residuals vs. ChestCircumference")}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\CommentTok{\#plot(Dat$UpperarmCircumference, mlr2$residuals, }
+ \CommentTok{\#    main = "Check for linearity \textbackslash{}n Residuals vs. UpperarmCircumference")}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-34-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\# removing outlier }\AlertTok{\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\NormalTok{mlr}\SpecialCharTok{$}\NormalTok{residuals}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             1             2             3             4             5 
+##  5.956937e-03 -1.332844e-03 -5.251029e-03 -1.039632e-03  1.197011e-02 
+##             6             7             8             9            10 
+## -1.251717e-02 -6.791130e-03  1.928979e-02  6.188541e-03  1.036856e-02 
+##            11            12            13            14            15 
+## -4.345616e-03 -7.307195e-03 -2.495303e-02  4.918695e-03 -3.800157e-02 
+##            16            17            18            19            20 
+##  6.269688e-03  5.547783e-03  1.544445e-02  1.304023e-02  4.432850e-05 
+##            21            22            23            24            25 
+##  1.875277e-03 -3.501379e-04 -1.833176e-03  4.423430e-03  2.918340e-03 
+##            26            27            28            29            30 
+## -8.340157e-03  7.695157e-03  3.834305e-03 -8.304792e-03  1.218527e-02 
+##            31            32            33            34            35 
+## -1.232603e-02 -1.510744e-02  8.842128e-03  3.997699e-02  1.944964e-02 
+##            36            37            38            39            40 
+## -7.323980e-03 -1.510744e-02  1.218527e-02 -8.473889e-05  4.705266e-03 
+##            41            42            43            44            45 
+##  2.832812e-02 -7.721004e-03  4.394364e-03 -6.240423e-02  4.647099e-03 
+##            46            47            48            49            50 
+## -5.245700e-03 -5.270288e-03 -2.494817e-02 -9.101708e-04 -1.863025e-02 
+##            51            52            53            54            55 
+##  6.322043e-02 -3.853789e-03  1.543100e-04  7.608842e-03  9.529831e-03 
+##            56            57            58            59            60 
+##  2.019599e-02 -5.601523e-03 -3.417828e-03  8.411472e-03 -3.775943e-02 
+##            61            62            63            64            65 
+##  4.897513e-03  2.565091e-03  3.549651e-02 -1.365776e-02  2.381819e-03 
+##            66            67            68            69            70 
+##  1.120767e-01  1.206278e-02  6.671676e-03 -3.109216e-03 -4.055844e-04 
+##            71            72            73            74            75 
+## -1.915472e-02 -1.746129e-03 -5.871981e-02  5.507945e-03  3.402292e-03 
+##            76            77            78            79            80 
+## -5.098792e-03 -1.000104e-04  1.997043e-02  1.053151e-02 -3.169265e-02 
+##            81            82            83            84            85 
+## -8.431075e-04  4.398170e-04  1.249716e-02 -1.140568e-02 -1.709374e-04 
+##            86            87            88            89            90 
+## -7.090843e-03 -4.175282e-03 -1.331395e-02 -1.030602e-02  1.826647e-02 
+##            91            92            93            94            95 
+##  1.031556e-02 -5.146534e-03 -1.964057e-02 -1.476825e-02  8.045230e-03 
+##            96            97            98            99           100 
+##  3.674879e-03  1.261882e-03  5.508613e-02 -1.907924e-02 -1.732636e-03 
+##           101           102           103           104           105 
+## -3.566094e-02 -1.628274e-05  8.746780e-03 -4.597710e-03 -2.010930e-02 
+##           106           107           108           109           110 
+##  6.539880e-03 -8.914988e-03 -1.362584e-03  1.246452e-02 -2.296667e-03 
+##           111           112           113           114           115 
+##  9.461437e-04  5.057741e-03  4.007034e-03  7.017479e-03  1.650925e-02 
+##           116           117           118           119           120 
+##  3.233252e-03 -5.375014e-03 -2.596098e-03 -1.273549e-03 -2.384207e-02 
+##           121           122           123           124           125 
+## -3.169982e-02 -1.766917e-02 -7.158312e-03 -3.362470e-05 -1.122663e-02 
+##           126           127           128           129           130 
+## -5.330584e-03  4.009693e-03  1.626721e-02 -1.064186e-02  6.974544e-03 
+##           131           132           133           134           135 
+##  6.371222e-03 -4.987573e-03  3.768253e-03 -1.718057e-02  7.100382e-03 
+##           136 
+##  1.625125e-03
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which.max}\NormalTok{(}\FunctionTok{abs}\NormalTok{(mlr}\SpecialCharTok{$}\NormalTok{residuals))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 66 
+## 66
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\#\# removing outlier }\AlertTok{\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+\DocumentationTok{\#\# Find high leverage points}
+\NormalTok{k}\OtherTok{=}\DecValTok{4}
+\NormalTok{n }\OtherTok{=}\DecValTok{136}
+\NormalTok{hv }\OtherTok{\textless{}{-}} \FunctionTok{hatvalues}\NormalTok{(mlr2)}
+\FunctionTok{which}\NormalTok{(hv }\SpecialCharTok{\textgreater{}}\NormalTok{ (}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(k}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   4  57  64  73 107 113 121 
+##   4  57  64  73 107 113 121
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{136}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(row\_num, hv, }\AttributeTok{xlab =} \StringTok{"row number"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"hatvalues"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Identification of high leverage points"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =}\NormalTok{ (}\DecValTok{2}\SpecialCharTok{*}\NormalTok{(k}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-37-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#outliers}
+\DocumentationTok{\#\#\# Use internally standardized residuals (rstandard)}
+\NormalTok{r1 }\OtherTok{\textless{}{-}} \FunctionTok{rstandard}\NormalTok{(mlr2)}
+\FunctionTok{which}\NormalTok{(}\FunctionTok{abs}\NormalTok{(r1) }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  44  66  80 121 
+##  44  66  80 121
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{136}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{21}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{6}\NormalTok{, }\DecValTok{6}\NormalTok{), }\AttributeTok{xlab =} \StringTok{"row number"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"internally studentized residuals"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Identification of outlier points"}\NormalTok{,}
+     \AttributeTok{type =} \StringTok{"n"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(row\_num, r1)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{3}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \SpecialCharTok{{-}}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-39-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Use externally standardized residuals (rstudent)}
+\NormalTok{r2 }\OtherTok{\textless{}{-}} \FunctionTok{rstudent}\NormalTok{(mlr2)}
+\FunctionTok{which}\NormalTok{(}\FunctionTok{abs}\NormalTok{(r2) }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  44  66  80 121 
+##  44  66  80 121
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{136}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{21}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\FloatTok{3.5}\NormalTok{, }\FloatTok{3.5}\NormalTok{), }\AttributeTok{xlab =} \StringTok{"row number"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"externally studentized residuals"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Identification of outlier points"}\NormalTok{,}
+     \AttributeTok{type =} \StringTok{"n"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(row\_num, r2)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{3}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \SpecialCharTok{{-}}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-41-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Find influential points }\AlertTok{\#\#\#}
+\DocumentationTok{\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#}
+
+\DocumentationTok{\#\#\# Use difference in fits (dffits)}
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{dffits}\NormalTok{(mlr2) }\CommentTok{\#influential if abs(dffits) \textgreater{} 2*sqrt((k+2)/(n{-}k{-}2))}
+\FunctionTok{which}\NormalTok{(}\FunctionTok{abs}\NormalTok{(d) }\SpecialCharTok{\textgreater{}} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{((k}\SpecialCharTok{+}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{k}\DecValTok{{-}2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  15  44  57  66  73  80 101 121 
+##  15  44  57  66  73  80 101 121
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{136}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{21}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\DecValTok{9}\NormalTok{, }\DecValTok{1}\NormalTok{),  }\AttributeTok{xlab =} \StringTok{"row number"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"deffits"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Identification of influential points"}\NormalTok{, }\AttributeTok{type =} \StringTok{"n"}\NormalTok{)}
+\FunctionTok{points}\NormalTok{(row\_num, d)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{((k}\SpecialCharTok{+}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{k}\DecValTok{{-}2}\NormalTok{)))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \SpecialCharTok{{-}} \DecValTok{2}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{((k}\SpecialCharTok{+}\DecValTok{2}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(n}\SpecialCharTok{{-}}\NormalTok{k}\DecValTok{{-}2}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-43-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Use Cook\textquotesingle{}s distance (cooks.distance)}
+\NormalTok{cd }\OtherTok{\textless{}{-}} \FunctionTok{cooks.distance}\NormalTok{(mlr2) }\CommentTok{\#influential if d \textgreater{} 1}
+\FunctionTok{which}\NormalTok{(cd }\SpecialCharTok{\textgreater{}} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## named integer(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{136}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(row\_num, cd, }\AttributeTok{xlab =} \StringTok{"row number"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"Cook\textquotesingle{}s distance"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Identification of influential points"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-45-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#\# Use COVRATIO (covratio)}
+\NormalTok{cv }\OtherTok{\textless{}{-}} \FunctionTok{covratio}\NormalTok{(mlr2) }\CommentTok{\#influential if covratio \textgreater{} 1 + 3*(k+1)/n OR covratio \textless{} 1 {-} 3*(k+1)/n}
+\FunctionTok{which}\NormalTok{(cv }\SpecialCharTok{\textgreater{}}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \DecValTok{3}\SpecialCharTok{*}\NormalTok{(k}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   4  64  81 107 113 
+##   4  64  81 107 113
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(cv }\SpecialCharTok{\textless{}}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \DecValTok{3}\SpecialCharTok{*}\NormalTok{(k}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  15  44  51  66  80  98 121 
+##  15  44  51  66  80  98 121
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{136}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(row\_num, cv, }\AttributeTok{xlab =} \StringTok{"row number"}\NormalTok{,}
+     \AttributeTok{ylab =} \StringTok{"covratio"}\NormalTok{, }
+     \AttributeTok{main =} \StringTok{"Identification of influential points"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{+} \DecValTok{3}\SpecialCharTok{*}\NormalTok{(k}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n))}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h =}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}} \DecValTok{3}\SpecialCharTok{*}\NormalTok{(k}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cols }\OtherTok{\textless{}{-}} \FunctionTok{character}\NormalTok{(}\FunctionTok{nrow}\NormalTok{(Dat))}
+\DocumentationTok{\#\# Remove Obs 66}
+\NormalTok{dat3 }\OtherTok{\textless{}{-}}\NormalTok{ Dat[}\SpecialCharTok{{-}}\FunctionTok{c}\NormalTok{(}\DecValTok{44}\NormalTok{,}\DecValTok{51}\NormalTok{,}\DecValTok{66}\NormalTok{,}\DecValTok{73}\NormalTok{,}\DecValTok{98}\NormalTok{),]}
+\NormalTok{mlr3 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{((WomenBodyFat) }\SpecialCharTok{\textasciitilde{}}\NormalTok{ . , }\AttributeTok{data =}\NormalTok{ dat3)}
+\FunctionTok{summary}\NormalTok{(mlr3) }\CommentTok{\#unusual x1 and x2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = (WomenBodyFat) ~ ., data = dat3)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.044869 -0.005455  0.000598  0.006653  0.042639 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)        -0.0421907  0.0334279  -1.262    0.209    
+## Age                 0.0001574  0.0001156   1.361    0.176    
+## Height             -0.0024792  0.0001999 -12.401   <2e-16 ***
+## WaistCircumference  0.0036511  0.0002265  16.121   <2e-16 ***
+## HipCircumference    0.0046997  0.0002131  22.055   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.01288 on 126 degrees of freedom
+## Multiple R-squared:  0.9748, Adjusted R-squared:  0.974 
+## F-statistic:  1218 on 4 and 126 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{vif}\NormalTok{(mlr3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                Age             Height WaistCircumference   HipCircumference 
+##           1.328067           1.040894           3.888220           3.358758
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 95\% Confidence interval for model parameters \#\#}
+\FunctionTok{confint}\NormalTok{(mlr3, }\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            2.5 %        97.5 %
+## (Intercept)        -1.083435e-01  0.0239620473
+## Age                -7.147381e-05  0.0003862463
+## Height             -2.874848e-03 -0.0020835638
+## WaistCircumference  3.202863e-03  0.0040992576
+## HipCircumference    4.277990e-03  0.0051213943
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Scatter plot \#\#}
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{Age, dat3}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and Age"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Age"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-50-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{Height, dat3}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and Weight"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Height"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-51-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{WaistCircumference, dat3}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and WaistCircumference"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"WaistCircumference"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-52-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{HipCircumference, dat3}\SpecialCharTok{$}\NormalTok{WomenBodyFat, }\AttributeTok{main =} \StringTok{"Relationship between WomenBodyFat and HipCircumference"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"HipCircumference"}\NormalTok{, }\AttributeTok{ylab =} \StringTok{"WomenBodyFat"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-53-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{Age, mlr3}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. Age"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{Height, mlr3}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. Height"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{WaistCircumference, mlr3}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. WaistCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{HipCircumference, mlr3}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for linearity }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals vs. HipCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-54-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for independence of random error}
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mfcol =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{row\_num }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\FunctionTok{nrow}\NormalTok{(dat3))}
+\NormalTok{sort\_x1 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{Age, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr3}\SpecialCharTok{$}\NormalTok{residuals[sort\_x1}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by Age"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-55-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sort\_x2 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{Height, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr3}\SpecialCharTok{$}\NormalTok{residuals[sort\_x2}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by Height"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-56-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sort\_x3 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{WaistCircumference, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr3}\SpecialCharTok{$}\NormalTok{residuals[sort\_x3}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by WaistCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-57-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sort\_x4 }\OtherTok{\textless{}{-}} \FunctionTok{sort}\NormalTok{(dat3}\SpecialCharTok{$}\NormalTok{HipCircumference, }\AttributeTok{index.return=}\ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{plot}\NormalTok{(row\_num, mlr3}\SpecialCharTok{$}\NormalTok{residuals[sort\_x4}\SpecialCharTok{$}\NormalTok{ix], }
+     \AttributeTok{main =} \StringTok{"Check for independence }\SpecialCharTok{\textbackslash{}n}\StringTok{ Residuals sorted by HipCircumference"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-58-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for zero mean and constant variance of random error}
+\FunctionTok{plot}\NormalTok{(mlr3}\SpecialCharTok{$}\NormalTok{fitted.values, mlr3}\SpecialCharTok{$}\NormalTok{residuals, }
+     \AttributeTok{main =} \StringTok{"Check for 0 mean and constant var }\SpecialCharTok{\textbackslash{}n}\StringTok{  Residual vs. fitted value"}\NormalTok{)}
+\FunctionTok{abline}\NormalTok{(}\AttributeTok{h=}\DecValTok{0}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-59-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Check for normality of random error}
+\FunctionTok{qqnorm}\NormalTok{(mlr3}\SpecialCharTok{$}\NormalTok{residuals)}
+\FunctionTok{qqline}\NormalTok{(mlr3}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Body_Fat_Prediction_files/figure-latex/unnamed-chunk-60-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{shapiro.test}\NormalTok{(mlr3}\SpecialCharTok{$}\NormalTok{residuals)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  mlr3$residuals
+## W = 0.95067, p-value = 0.0001198
+\end{verbatim}
+
+\end{document}
